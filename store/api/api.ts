@@ -41,6 +41,13 @@ export const api = createApi({
           },
         };
       },
+      transformResponse: (response: GetPhotosAPIResponse, meta) => {
+        if (meta?.response?.status == 400 || response.hits.length == 0) {
+          return null;
+        }
+
+        return response.hits[0];
+      },
     }),
   }),
 });
