@@ -30,7 +30,19 @@ export const api = createApi({
         };
       },
     }),
+    getSinglePhoto: builder.query<Image | null, { photoId: string }>({
+      query: ({ photoId }) => {
+        return {
+          url: '/',
+          params: {
+            key: process.env.NEXT_PUBLIC_PIXABAY_API_KEY,
+            id: photoId,
+            imageType: 'photo',
+          },
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetPhotosQuery } = api;
+export const { useGetPhotosQuery, useGetSinglePhotoQuery } = api;
