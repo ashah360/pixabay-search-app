@@ -17,7 +17,7 @@ export const Button = styled.button<{ w100?: boolean }>`
   color: black;
   border: none;
   outline: none !important;
-  opacity: ${({ disabled }) => (disabled ? 0.6 : 1)};
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 
   ${({ w100 }) =>
     w100 &&
