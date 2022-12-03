@@ -1,7 +1,9 @@
+import { Button } from '@/components/Button';
 import { useGetSinglePhotoQuery } from '@/store/api/api';
 import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
+import download from 'util/download';
 
 /**
  * Styles
@@ -117,6 +119,10 @@ const Tag = styled.div`
   font-weight: 400;
 `;
 
+const DownloadSection = styled.div`
+  margin-top: 2rem;
+`;
+
 /**
  * Interfaces
  */
@@ -194,6 +200,20 @@ export default function PhotoPage(): JSX.Element {
               ))}
             </TagList>
           </TagsSection>
+          <DownloadSection>
+            <Button
+              w100
+              onClick={() => {
+                if (data?.largeImageURL) {
+                  const { largeImageURL, id } = data;
+
+                  download(largeImageURL, `${id}.jpg`);
+                }
+              }}
+            >
+              Download
+            </Button>
+          </DownloadSection>
         </ImageDetailsCard>
       </ContentContainer>
     </Container>
