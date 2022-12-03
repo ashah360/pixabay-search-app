@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 import download from 'util/download';
+import { FiArrowLeft } from 'react-icons/fi';
+import Link from 'next/link';
 
 /**
  * Styles
@@ -11,6 +13,19 @@ import download from 'util/download';
 
 const Container = styled.div`
   padding: 2rem;
+`;
+
+const TopContainer = styled.div`
+  margin-bottom: 2rem;
+`;
+
+const BackArrowLink = styled(Link)`
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
 `;
 
 const ContentContainer = styled.div`
@@ -150,12 +165,14 @@ export default function PhotoPage(): JSX.Element {
     return <div></div>;
   }
 
-  if (data === null) {
-    return <Container>Image Not Found</Container>;
-  }
-
   return (
     <Container>
+      <TopContainer>
+        <BackArrowLink href='/'>
+          <FiArrowLeft />
+          Back
+        </BackArrowLink>
+      </TopContainer>
       <ContentContainer>
         <ImageContainer
           height={(data?.webformatHeight || 1) * 1.5}
