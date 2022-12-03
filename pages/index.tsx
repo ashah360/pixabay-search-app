@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 const ImagesSection = styled.section`
   max-width: 1600px;
   margin: auto;
-  padding: 24px;
+  padding: 36px;
   display: flex;
   flex-direction: column;
   height: 100vh;
