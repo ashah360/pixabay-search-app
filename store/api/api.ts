@@ -13,14 +13,19 @@ export const api = createApi({
     baseUrl: 'https://pixabay.com/api',
   }),
   endpoints: (builder) => ({
-    getPhotos: builder.query<GetPhotosAPIResponse, { searchQuery: string }>({
-      query: ({ searchQuery }) => {
+    getPhotos: builder.query<
+      GetPhotosAPIResponse,
+      { searchQuery: string; page: number }
+    >({
+      query: ({ searchQuery, page }) => {
         return {
           url: '/',
           params: {
             key: process.env.NEXT_PUBLIC_PIXABAY_API_KEY,
             q: searchQuery,
             image_type: 'photo',
+            per_page: 50,
+            page,
           },
         };
       },
